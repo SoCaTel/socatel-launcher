@@ -1,0 +1,14 @@
+elasticsearch.username: kibana
+# Update it after having generated a pwd with the elasticsearch-setup-passwords command
+# See https://www.elastic.co/guide/en/elasticsearch/reference/7.2/configuring-tls-docker.html
+elasticsearch.password: PleaseChangeMe
+elasticsearch.ssl.certificateAuthorities: /usr/share/kibana/config/certificates/ca/ca.crt
+elasticsearch.ssl.verificationMode: certificate
+
+server.name: kibana
+server.host: "0"
+
+status.allowAnonymous: true
+
+# See https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html
+xpack.security.encryptionKey: YourArbitraryStringOf32Characters
