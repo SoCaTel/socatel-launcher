@@ -9,7 +9,7 @@ services:
       - discovery.seed_hosts=es02
       - cluster.initial_master_nodes=es01,es02
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms384m -Xmx384m"
       - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
       - xpack.security.http.ssl.enabled=false
@@ -38,7 +38,7 @@ services:
       - discovery.seed_hosts=es01
       - cluster.initial_master_nodes=es01,es02
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms384m -Xmx384m"
       - xpack.license.self_generated.type=basic
       - xpack.security.enabled=true
       - xpack.security.http.ssl.enabled=false
@@ -69,5 +69,13 @@ services:
       - 5601:5601
     expose:
       - 5601
+
+  graphdb:
+    image: nabda/graphdb:8.9.0-free
+    container_name: graphdb
+    volumes:
+      - ./data/core/graphdb:/opt/graphdb/home
+    ports:
+      - 7200:7200
 
 volumes: {"esdata_01": {"driver": "local"}, "esdata_02": {"driver": "local"}}
