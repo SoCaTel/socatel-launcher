@@ -1,0 +1,22 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - /app/logs/*.log
+    json.keys_under_root: true
+    json.add_error_key: true
+
+output.elasticsearch:
+  hosts: ["http://es01:9200"]
+  username: elastic
+  password: PleaseChangeMe
+  index: graphql-logs-%{[agent.version]}
+
+setup.template.name: graphql-logs
+setup.template.pattern: "graphql-logs-*"
+
+setup.kibana.host: "http://kibana:5601"
+
+setup.dashboards.enabled: true
+setup.dashboards.index: "graphql-logs-*"
+setup.dashboards.retry.enabled: true
+setup.dashboards.retry.maximum: 60
