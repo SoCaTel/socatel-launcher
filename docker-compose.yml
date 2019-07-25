@@ -79,6 +79,7 @@ services:
     environment:
       - "SPRING_PROFILES_ACTIVE=docker"
     volumes:
+      - ./config/application-docker.yml:/application-docker.yml
       - graphql-logs:/app/logs
     ports:
       - 8080:8080
